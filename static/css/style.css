@@ -1,137 +1,397 @@
-/* ── Global ── */
+/* ══════════════════════════════════════
+   DataWash — Notion Dark Theme
+   Day 6
+══════════════════════════════════════ */
+
+:root {
+  --bg-base:    #161616;
+  --bg-card:    #1c1c1c;
+  --bg-hover:   #222222;
+  --bg-input:   #141414;
+  --border:     #2a2a2a;
+  --border-mid: #333333;
+  --text-1:     #e8e8e8;
+  --text-2:     #aaaaaa;
+  --text-3:     #666666;
+  --text-4:     #444444;
+  --white:      #ffffff;
+  --warn:       #f5a623;
+  --danger:     #e05252;
+  --success:    #7ec98a;
+  --info:       #6ab0f5;
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  12px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ── */
 body {
-  background-color: #0d0d0d;
-  color: #f0f0f0;
-  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-1);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
   min-height: 100vh;
 }
 
 /* ── Navbar ── */
 .navbar {
-  background-color: #111;
-  border-bottom: 1px solid #222;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .navbar-brand {
-  color: #fff !important;
-  letter-spacing: 1px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white) !important;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-brand::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--white);
+  border-radius: 50%;
+}
+
+.navbar .text-muted {
+  font-size: 12px;
+  color: var(--text-3) !important;
+}
+
+/* ── Main container ── */
+main.container {
+  max-width: 740px;
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
 /* ── Hero ── */
-.hero h1 {
-  color: #ffffff;
+.dw-hero h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: -0.4px;
+  margin-bottom: 8px;
 }
 
-/* ── Feature Cards ── */
+.dw-hero p {
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+/* ── Section label ── */
+.dw-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-3);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* ── Divider ── */
+.dw-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 36px 0;
+}
+
+/* ── Feature cards ── */
 .feature-card {
-  background-color: #141414;
-  border: 1px solid #2a2a2a;
-  border-radius: 12px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
-  border-color: #555;
+  background: var(--bg-hover);
+  border-color: var(--border-mid);
 }
 
-/* ── Upload Box ── */
+.feature-card .card-icon {
+  font-size: 18px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.feature-card h5 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-1);
+  margin-bottom: 4px;
+}
+
+.feature-card p {
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Upload box ── */
 .upload-box {
-  background-color: #141414;
-  border: 2px dashed #333;
-  border-radius: 16px;
-  max-width: 520px;
+  background: var(--bg-card);
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--radius-lg);
+  max-width: 100%;
   transition: border-color 0.2s ease;
 }
 
 .upload-box:hover {
-  border-color: #666;
+  border-color: #555;
+}
+
+.upload-box h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-1);
+  margin-bottom: 6px;
+}
+
+.upload-box p {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* ── Stat cards ── */
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.stat-card .stat-val {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.stat-card .stat-val.warn { color: var(--warn); }
+.stat-card .stat-val.danger { color: var(--danger); }
+.stat-card .stat-label {
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+/* ── Clean options card ── */
+.clean-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.clean-card h5 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-1);
 }
 
 /* ── Buttons ── */
 .btn-primary {
-  background-color: #fff;
-  color: #000;
+  background: var(--white);
+  color: #111;
   border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
   font-weight: 600;
+  padding: 9px 20px;
+  transition: background 0.15s ease, transform 0.1s ease;
 }
 
 .btn-primary:hover {
-  background-color: #ddd;
-  color: #000;
+  background: #e8e8e8;
+  color: #111;
+  transform: translateY(-1px);
 }
 
-/* ── Footer ── */
-footer {
-  border-top: 1px solid #1e1e1e;
-  color: #555 !important;
+.btn-primary:active {
+  transform: translateY(0);
 }
 
-footer a {
-  color: #888;
-  text-decoration: none;
+.btn-outline-secondary {
+  background: transparent;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  padding: 6px 14px;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-footer a:hover {
-  color: #fff;
+.btn-outline-secondary:hover {
+  background: var(--bg-hover);
+  color: var(--text-1);
+  border-color: var(--border-mid);
 }
 
-/* ── Stat Cards ── */
-.stat-card {
-  background-color: #141414;
-  border: 1px solid #2a2a2a;
-  border-radius: 10px;
+.btn-outline-light {
+  background: transparent;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  padding: 9px 20px;
+  transition: background 0.15s ease;
 }
 
-/* ── Table ── */
+.btn-outline-light:hover {
+  background: var(--bg-hover);
+  color: var(--text-1);
+  border-color: var(--border-mid);
+}
+
+/* ── Tables ── */
 .table {
-  font-size: 0.85rem;
+  font-size: 12px;
+  color: var(--text-1);
+  --bs-table-bg: transparent;
+  --bs-table-border-color: var(--border);
+  --bs-table-hover-bg: var(--bg-hover);
 }
 
 .table thead th {
-  background-color: #1a1a1a;
-  color: #aaa;
-  border-color: #2a2a2a;
+  background: var(--bg-hover);
+  color: var(--text-3);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-color: var(--border);
+  padding: 10px 14px;
 }
 
-.table td, .table th {
-  border-color: #2a2a2a;
+.table td {
+  border-color: var(--border);
+  padding: 9px 14px;
+  vertical-align: middle;
+  color: var(--text-2);
 }
 
-/* ── File Input ── */
-.form-control:focus {
-  border-color: #555;
-  box-shadow: none;
+/* ── Form controls ── */
+.form-control,
+.form-select {
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-1) !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 13px;
 }
 
-/* ── Clean Card ── */
-.clean-card {
-  background-color: #141414;
-  border: 1px solid #2a2a2a;
-  border-radius: 12px;
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.08) !important;
+  border-color: var(--border-mid) !important;
+  outline: none;
+}
+
+.form-check-input {
+  background-color: var(--bg-input);
+  border-color: var(--border-mid);
 }
 
 .form-check-input:checked {
-  background-color: #fff;
-  border-color: #fff;
+  background-color: var(--white);
+  border-color: var(--white);
 }
 
-.form-select option {
-  background-color: #1a1a1a;
+.form-check-label {
+  font-size: 13px;
+  color: var(--text-2);
 }
 
-/* ── Progress bars ── */
-.progress {
-  border-radius: 4px;
+label.form-label {
+  font-size: 11px;
+  color: var(--text-3);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* ── Badges ── */
 .badge {
-  font-size: 0.72rem;
+  font-size: 10px;
   font-weight: 500;
+  padding: 3px 7px;
+  border-radius: 4px;
 }
 
-/* ── Numeric summary table tweaks ── */
-.table td {
-  vertical-align: middle;
+.badge.bg-primary {
+  background: #1e2a3a !important;
+  color: var(--info) !important;
 }
+
+.badge.bg-success {
+  background: #1a2b1e !important;
+  color: var(--success) !important;
+}
+
+.badge.bg-secondary {
+  background: var(--bg-hover) !important;
+  color: var(--text-2) !important;
+}
+
+/* ── Progress bars ── */
+.progress {
+  background: var(--bg-hover) !important;
+  border-radius: 4px;
+}
+
+/* ── Alerts ── */
+.alert {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-1);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+}
+
+.alert-danger  { border-color: #4a2020; color: #f09090; background: #1e1010; }
+.alert-warning { border-color: #4a3a10; color: #f5c060; background: #1e180a; }
+.alert-success { border-color: #1a3a20; color: #7ec98a; background: #0e1e12; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-4) !important;
+}
+
+footer a {
+  color: var(--text-3);
+  text-decoration: none;
+}
+
+footer a:hover { color: var(--text-1); }
+
+/* ── Text overrides ── */
+.text-muted { color: var(--text-2) !important; }
+.text-success { color: var(--success) !important; }
+.text-warning { color: var(--warn) !important; }
+.text-danger  { color: var(--danger) !important; }
+.text-info    { color: var(--info) !important; }
