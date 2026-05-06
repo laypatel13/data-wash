@@ -1,0 +1,77 @@
+/* ── Global ── */
+body {
+  background-color: #0d0d0d;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── Navbar ── */
+.navbar {
+  background-color: #111;
+  border-bottom: 1px solid #222;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  letter-spacing: 1px;
+}
+
+/* ── Hero ── */
+.hero h1 {
+  color: #ffffff;
+}
+
+/* ── Feature Cards ── */
+.feature-card {
+  background-color: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: #555;
+}
+
+/* ── Upload Box ── */
+.upload-box {
+  background-color: #141414;
+  border: 2px dashed #333;
+  border-radius: 16px;
+  max-width: 520px;
+  transition: border-color 0.2s ease;
+}
+
+.upload-box:hover {
+  border-color: #666;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #ddd;
+  color: #000;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid #1e1e1e;
+  color: #555 !important;
+}
+
+footer a {
+  color: #888;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #fff;
+}
