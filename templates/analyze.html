@@ -80,14 +80,14 @@
           </td>
           <td>
             <div class="d-flex align-items-center gap-2">
-              <div class="progress flex-grow-1" style="height: 6px; background-color: #2a2a2a;">
-                <div class="progress-bar
-                  {% if col.missing_pct > 30 %}bg-danger
-                  {% elif col.missing_pct > 10 %}bg-warning
-                  {% else %}bg-success{% endif %}"
-                  style="width: {{ col.missing_pct }}%">
+                <div class="progress flex-grow-1" style="height:6px;background-color:#2a2a2a;">
+                    <div class="progress-bar {% if col.missing_pct > 30 %}bg-danger{% elif col.missing_pct > 10 %}bg-warning{% else %}bg-success{% endif %}" 
+                        role="progressbar" 
+                        aria-valuenow="{{ col.missing_pct | int }}" 
+                        aria-valuemin="0" 
+                        aria-valuemax="100">
+                    </div>
                 </div>
-              </div>
               <span class="small text-muted" style="min-width: 36px;">{{ col.missing_pct }}%</span>
             </div>
           </td>

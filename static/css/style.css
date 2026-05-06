@@ -119,3 +119,19 @@ footer a:hover {
 .form-select option {
   background-color: #1a1a1a;
 }
+
+/* ── Progress bars ── */
+.progress {
+  border-radius: 4px;
+}
+
+/* ── Badges ── */
+.badge {
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+/* ── Numeric summary table tweaks ── */
+.table td {
+  vertical-align: middle;
+}
