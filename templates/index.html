@@ -4,46 +4,57 @@
 {% block content %}
 
 <!-- HERO -->
-<div class="hero text-center py-5">
+<div class="text-center py-5">
   <h1 class="display-4 fw-bold">🧼 DataWash</h1>
-  <p class="lead text-muted mt-3">
-    Upload a messy CSV. Get it cleaned, analyzed, and ready to use — in seconds.
+  <p class="lead text-muted mt-2">
+    Upload a messy CSV. Get it cleaned, analyzed, and ready to use.
   </p>
 </div>
 
 <!-- FEATURE CARDS -->
-<div class="row g-4 mt-2 mb-5 justify-content-center">
+<div class="row g-4 mb-5 justify-content-center">
   <div class="col-md-4">
     <div class="card feature-card h-100 text-center p-4">
-      <div class="fs-1 mb-3">📤</div>
+      <div class="fs-1 mb-2">📤</div>
       <h5 class="fw-bold">Upload</h5>
-      <p class="text-muted small">Drop any CSV file up to 16MB. We handle the rest.</p>
+      <p class="text-muted small">Drop any CSV file up to 16MB.</p>
     </div>
   </div>
   <div class="col-md-4">
     <div class="card feature-card h-100 text-center p-4">
-      <div class="fs-1 mb-3">🧹</div>
+      <div class="fs-1 mb-2">🧹</div>
       <h5 class="fw-bold">Clean</h5>
-      <p class="text-muted small">Remove nulls, duplicates, fix whitespace and data types automatically.</p>
+      <p class="text-muted small">Remove nulls, duplicates, fix whitespace.</p>
     </div>
   </div>
   <div class="col-md-4">
     <div class="card feature-card h-100 text-center p-4">
-      <div class="fs-1 mb-3">📊</div>
+      <div class="fs-1 mb-2">📊</div>
       <h5 class="fw-bold">Analyze</h5>
-      <p class="text-muted small">Get instant stats, column info, and missing value summaries.</p>
+      <p class="text-muted small">Instant stats, column info, missing values.</p>
     </div>
   </div>
 </div>
 
-<!-- UPLOAD BOX (placeholder — wired up on Day 3) -->
+<!-- UPLOAD FORM -->
 <div class="upload-box text-center mx-auto p-5">
-  <div class="fs-1 mb-3">📂</div>
-  <h4 class="fw-semibold">Drop your CSV here</h4>
-  <p class="text-muted small mb-4">Upload coming on Day 3 — stay tuned!</p>
-  <button class="btn btn-primary btn-lg px-5" disabled>
-    <i class="bi bi-upload me-2"></i>Upload CSV
-  </button>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="fs-1 mb-3">📂</div>
+    <h4 class="fw-semibold mb-1">Drop your CSV here</h4>
+    <p class="text-muted small mb-4">Supports .csv files up to 16MB</p>
+
+    <input
+      type="file"
+      name="file"
+      accept=".csv"
+      class="form-control mb-4 bg-dark text-light border-secondary"
+      required
+    />
+
+    <button type="submit" class="btn btn-primary btn-lg px-5">
+      <i class="bi bi-upload me-2"></i>Upload & Preview
+    </button>
+  </form>
 </div>
 
 {% endblock %}
