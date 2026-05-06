@@ -17,25 +17,25 @@
 <div class="row g-3 mb-4">
   <div class="col-6 col-md-3">
     <div class="stat-card text-center p-3">
-      <div class="text-muted small mb-1">Rows Before</div>
+      <div style="font-size:11px; color:#666; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:4px;">Rows Before</div>
       <div class="fs-4 fw-bold text-white">{{ rows_before }}</div>
     </div>
   </div>
   <div class="col-6 col-md-3">
     <div class="stat-card text-center p-3">
-      <div class="text-muted small mb-1">Rows After</div>
+      <div style="font-size:11px; color:#666; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:4px;">Rows After</div>
       <div class="fs-4 fw-bold text-success">{{ rows_after }}</div>
     </div>
   </div>
   <div class="col-6 col-md-3">
     <div class="stat-card text-center p-3">
-      <div class="text-muted small mb-1">Cols Before</div>
+      <div style="font-size:11px; color:#666; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:4px;">Cols Before</div>
       <div class="fs-4 fw-bold text-white">{{ cols_before }}</div>
     </div>
   </div>
   <div class="col-6 col-md-3">
     <div class="stat-card text-center p-3">
-      <div class="text-muted small mb-1">Cols After</div>
+      <div style="font-size:11px; color:#666; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:4px;">Cols After</div>
       <div class="fs-4 fw-bold text-success">{{ cols_after }}</div>
     </div>
   </div>
@@ -44,11 +44,14 @@
 <!-- CHANGES LOG -->
 <div class="card clean-card p-4 mb-4">
   <h5 class="fw-bold mb-3">🔧 Changes Made</h5>
-  <ul class="list-unstyled mb-0">
-    {% for change in changes %}
-      <li class="mb-1 small">{{ change }}</li>
-    {% endfor %}
-  </ul>
+    <ul class="list-unstyled mb-0">
+        {% for change in changes %}
+            <li class="mb-2" style="font-size:13px; color:#aaaaaa; display:flex; align-items:flex-start; gap:8px;">
+                <span style="color:#7ec98a; margin-top:1px;">✓</span>
+                <span>{{ change | replace("✅ ", "") | replace("ℹ️ ", "") }}</span>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
 
 <!-- DOWNLOAD (Day 6) -->
