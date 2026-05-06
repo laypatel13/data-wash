@@ -75,3 +75,31 @@ footer a {
 footer a:hover {
   color: #fff;
 }
+
+/* ── Stat Cards ── */
+.stat-card {
+  background-color: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+}
+
+/* ── Table ── */
+.table {
+  font-size: 0.85rem;
+}
+
+.table thead th {
+  background-color: #1a1a1a;
+  color: #aaa;
+  border-color: #2a2a2a;
+}
+
+.table td, .table th {
+  border-color: #2a2a2a;
+}
+
+/* ── File Input ── */
+.form-control:focus {
+  border-color: #555;
+  box-shadow: none;
+}
