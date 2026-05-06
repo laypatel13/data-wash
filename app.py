@@ -75,6 +75,60 @@ def preview():
 
     return render_template("preview.html", table=preview_html, stats=stats)
 
+@app.route("/clean", methods=["POST"])
+def clean():
+    filepath = session.get("filepath")
+    if not filepath or not os.path.exists(filepath):
+        flash("Session expired. Please upload again.", "warning")
+        return redirect(url_for("index"))
+
+    df = pd.read_csv(filepath)
+
+    options = {
+        "standardize_headers": request.form.get("standardize_headers") == "on",
+        "strip_whitespace":    request.form.get("strip_whitespace") == "on",
+        "drop_empty_cols":     request.form.get("drop_empty_cols") == "on",
+        "drop_duplicates":     request.form.get("drop_duplicates") == "on",
+        "remove_outliers":     request.form.get("remove_outliers") == "on",
+        "fill_numeric":        request.form.get("fill_numeric", "mean"),
+        "fill_categorical":    request.form.get("fill_categorical", "mode"),
+    }
+
+    from utils.cleaner import clean_dataframe
+    cleaned_df, changes = clean_dataframe(df, options)
+
+    # Save cleaned file
+    clean_filename = f"cleaned_{uuid.uuid4().hex}.csv"
+    clean_filepath = os.path.join(app.config["UPLOAD_FOLDER"], clean_filename)
+    cleaned_df.to_csv(clean_filepath, index=False)
+
+    session["clean_filepath"] = clean_filepath
+
+    return render_template(
+        "result.html",
+        changes=changes,
+        rows_before=df.shape[0],
+        rows_after=cleaned_df.shape[0],
+        cols_before=df.shape[1],
+        cols_after=cleaned_df.shape[1],
+        filename=session.get("original_name"),
+    )
+
+
+@app.route("/analyze")
+def analyze():
+    filepath = session.get("filepath")
+    if not filepath or not os.path.exists(filepath):
+        flash("Session expired. Please upload again.", "warning")
+        return redirect(url_for("index"))
+
+    df = pd.read_csv(filepath)
+
+    from utils.analyzer import analyze_dataframe
+    analysis = analyze_dataframe(df)
+
+    return render_template("analyze.html", analysis=analysis, filename=session.get("original_name"))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
