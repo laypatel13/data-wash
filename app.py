@@ -1,7 +1,7 @@
 import os
 import uuid
 import pandas as pd
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, send_file
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "datawash-dev-key")
@@ -128,6 +128,23 @@ def analyze():
     analysis = analyze_dataframe(df)
 
     return render_template("analyze.html", analysis=analysis, filename=session.get("original_name"))
+
+@app.route("/download")
+def download():
+    clean_filepath = session.get("clean_filepath")
+    if not clean_filepath or not os.path.exists(clean_filepath):
+        flash("No cleaned file found. Please clean your data first.", "warning")
+        return redirect(url_for("index"))
+
+    original = session.get("original_name", "data.csv")
+    download_name = f"cleaned_{original}"
+
+    return send_file(
+        clean_filepath,
+        mimetype="text/csv",
+        as_attachment=True,
+        download_name=download_name
+    )
 
 
 if __name__ == "__main__":
