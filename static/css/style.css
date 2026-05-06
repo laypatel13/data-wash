@@ -103,3 +103,19 @@ footer a:hover {
   border-color: #555;
   box-shadow: none;
 }
+
+/* ── Clean Card ── */
+.clean-card {
+  background-color: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+}
+
+.form-check-input:checked {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.form-select option {
+  background-color: #1a1a1a;
+}
