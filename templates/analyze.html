@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Analysis — {{ filename }}{% endblock %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="fw-bold mb-0">📊 Data Analysis</h2>
+    <p class="text-muted small mb-0">{{ filename }}</p>
+  </div>
+  <div>
+    <a href="/preview" class="btn btn-outline-secondary btn-sm me-2">
+      <i class="bi bi-arrow-left me-1"></i>Back to Preview
+    </a>
+    <a href="/" class="btn btn-outline-secondary btn-sm">
+      <i class="bi bi-upload me-1"></i>New File
+    </a>
+  </div>
+</div>
+
+<!-- OVERVIEW CARDS -->
+<div class="row g-3 mb-4">
+  <div class="col-6 col-md-3">
+    <div class="stat-card text-center p-3">
+      <div class="fs-3 fw-bold text-white">{{ analysis.rows }}</div>
+      <div class="text-muted small">Total Rows</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="stat-card text-center p-3">
+      <div class="fs-3 fw-bold text-white">{{ analysis.cols }}</div>
+      <div class="text-muted small">Total Columns</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="stat-card text-center p-3">
+      <div class="fs-3 fw-bold text-warning">{{ analysis.total_missing }}</div>
+      <div class="text-muted small">Missing Values</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="stat-card text-center p-3">
+      <div class="fs-3 fw-bold text-info">{{ analysis.memory_kb }} KB</div>
+      <div class="text-muted small">Memory Usage</div>
+    </div>
+  </div>
+</div>
+
+<!-- COLUMN BREAKDOWN -->
+<div class="card clean-card p-4 mb-4">
+  <h5 class="fw-bold mb-3">🗂️ Column Breakdown</h5>
+  <div class="table-responsive">
+    <table class="table table-dark table-bordered table-sm table-hover mb-0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Column</th>
+          <th>Type</th>
+          <th>Missing</th>
+          <th>Missing %</th>
+          <th>Unique Values</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for col in analysis.columns %}
+        <tr>
+          <td class="text-muted">{{ loop.index }}</td>
+          <td class="fw-semibold">{{ col.name }}</td>
+          <td>
+            <span class="badge
+              {% if 'int' in col.dtype or 'float' in col.dtype %}bg-primary
+              {% elif 'object' in col.dtype %}bg-success
+              {% else %}bg-secondary{% endif %}">
+              {{ col.dtype }}
+            </span>
+          </td>
+          <td class="{% if col.missing > 0 %}text-warning{% else %}text-success{% endif %}">
+            {{ col.missing }}
+          </td>
+          <td>
+            <div class="d-flex align-items-center gap-2">
+              <div class="progress flex-grow-1" style="height: 6px; background-color: #2a2a2a;">
+                <div class="progress-bar
+                  {% if col.missing_pct > 30 %}bg-danger
+                  {% elif col.missing_pct > 10 %}bg-warning
+                  {% else %}bg-success{% endif %}"
+                  style="width: {{ col.missing_pct }}%">
+                </div>
+              </div>
+              <span class="small text-muted" style="min-width: 36px;">{{ col.missing_pct }}%</span>
+            </div>
+          </td>
+          <td>{{ col.unique }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- NUMERIC SUMMARY -->
+{% if analysis.numeric_summary %}
+<div class="card clean-card p-4 mb-4">
+  <h5 class="fw-bold mb-1">🔢 Numeric Summary</h5>
+  <p class="text-muted small mb-3">Count, mean, std, min, max for all numeric columns</p>
+  <div class="table-responsive">
+    {{ analysis.numeric_summary | safe }}
+  </div>
+</div>
+{% endif %}
+
+<!-- ACTIONS -->
+<div class="mt-2">
+  <a href="/preview" class="btn btn-primary px-4 me-2">
+    <i class="bi bi-magic me-2"></i>Clean This Data
+  </a>
+</div>
+
+{% endblock %}
