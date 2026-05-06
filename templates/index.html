@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}DataWash — CSV Cleaner{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<div class="hero text-center py-5">
+  <h1 class="display-4 fw-bold">🧼 DataWash</h1>
+  <p class="lead text-muted mt-3">
+    Upload a messy CSV. Get it cleaned, analyzed, and ready to use — in seconds.
+  </p>
+</div>
+
+<!-- FEATURE CARDS -->
+<div class="row g-4 mt-2 mb-5 justify-content-center">
+  <div class="col-md-4">
+    <div class="card feature-card h-100 text-center p-4">
+      <div class="fs-1 mb-3">📤</div>
+      <h5 class="fw-bold">Upload</h5>
+      <p class="text-muted small">Drop any CSV file up to 16MB. We handle the rest.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card feature-card h-100 text-center p-4">
+      <div class="fs-1 mb-3">🧹</div>
+      <h5 class="fw-bold">Clean</h5>
+      <p class="text-muted small">Remove nulls, duplicates, fix whitespace and data types automatically.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card feature-card h-100 text-center p-4">
+      <div class="fs-1 mb-3">📊</div>
+      <h5 class="fw-bold">Analyze</h5>
+      <p class="text-muted small">Get instant stats, column info, and missing value summaries.</p>
+    </div>
+  </div>
+</div>
+
+<!-- UPLOAD BOX (placeholder — wired up on Day 3) -->
+<div class="upload-box text-center mx-auto p-5">
+  <div class="fs-1 mb-3">📂</div>
+  <h4 class="fw-semibold">Drop your CSV here</h4>
+  <p class="text-muted small mb-4">Upload coming on Day 3 — stay tuned!</p>
+  <button class="btn btn-primary btn-lg px-5" disabled>
+    <i class="bi bi-upload me-2"></i>Upload CSV
+  </button>
+</div>
+
+{% endblock %}
