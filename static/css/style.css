@@ -34,7 +34,7 @@
 body {
   background-color: var(--bg-base);
   color: var(--text-1);
-  font-family: 'Copperplate', system-ui, -apple-system, sans-serif;
+  font-family: 'Copperplate', 'Copperplate Gothic Light', 'Inter', system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.6;
   min-height: 100vh;
