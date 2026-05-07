@@ -11,11 +11,11 @@
 
 ## ✨ Features
 
-- 📤 Upload any CSV file (up to 16MB)
-- 👁️ Preview raw data with instant stats
-- 🧹 Auto-clean: nulls, duplicates, whitespace, data types
-- 📊 Analysis dashboard: shape, dtypes, missing values, summary stats
-- 📥 Download the cleaned CSV
+- Upload any CSV file. (up to 16MB)
+- Preview raw data with instant stats.
+- Auto-clean: nulls, duplicates, whitespace, data types.
+- Analysis dashboard - shape, dtypes, missing values, summary stats.
+- Download the cleaned CSV.
 
 ---
 
@@ -75,19 +75,12 @@ DataWash/
 
 ---
 
-## 🧪 Running Tests
-
-```bash
-pytest
-```
-
----
-
 ## 🌐 Deployment
 
 Deployed on **Render** — see `render.yaml` for configuration.
+> Note: Hosted on Render free tier — first load may take 20–30s to wake up.
 
-Live URL: _coming soon_
+Live URL: https://data-wash-sr98.onrender.com
 
 ---
 
