@@ -6,7 +6,7 @@
 <!-- HEADER -->
 <div class="d-flex justify-content-between align-items-center mb-4">
   <div>
-    <h2 class="fw-bold mb-0">📊 Data Analysis</h2>
+    <h2 class="fw-bold mb-0">◎ Data Analysis</h2>
     <p class="text-muted small mb-0">{{ filename }}</p>
   </div>
   <div>
@@ -49,7 +49,7 @@
 
 <!-- COLUMN BREAKDOWN -->
 <div class="card clean-card p-4 mb-4">
-  <h5 class="fw-bold mb-3">🗂️ Column Breakdown</h5>
+  <h5 class="fw-bold mb-3">⚀ Column Breakdown</h5>
   <div class="table-responsive">
     <table class="table table-dark table-bordered table-sm table-hover mb-0">
       <thead>
@@ -102,7 +102,7 @@
 <!-- NUMERIC SUMMARY -->
 {% if analysis.numeric_summary %}
 <div class="card clean-card p-4 mb-4">
-  <h5 class="fw-bold mb-1">🔢 Numeric Summary</h5>
+  <h5 class="fw-bold mb-1">⚀ Numeric Summary</h5>
   <p class="text-muted small mb-3">Count, mean, std, min, max for all numeric columns</p>
   <div class="table-responsive">
     {{ analysis.numeric_summary | safe }}
