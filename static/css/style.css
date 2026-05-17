@@ -34,7 +34,7 @@
 body {
   background-color: var(--bg-base);
   color: var(--text-1);
-  font-family: 'Copperplate', 'Copperplate Gothic Light', 'Balthazar', system-ui, sans-serif;
+  font-family: 'Copperplate', 'Georgia', system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.6;
   min-height: 100vh;
