@@ -99,6 +99,56 @@
   </div>
 </div>
 
+<!-- CHARTS -->
+<div class="row g-3 mb-4">
+
+  <!-- Donut — data types -->
+  <div class="col-md-4">
+    <div class="clean-card p-3 h-100">
+      <div class="dw-label mb-3">Data Types</div>
+      <div id="pie-chart"></div>
+    </div>
+  </div>
+
+  <!-- Bar — missing values -->
+  <div class="col-md-4">
+    <div class="clean-card p-3 h-100">
+      <div class="dw-label mb-3">Missing Values</div>
+      {% if analysis.bar_chart %}
+        <div id="bar-chart"></div>
+      {% else %}
+        <div class="d-flex align-items-center justify-content-center h-100"
+             style="color:#333; font-size:12px; min-height:200px;">
+          No missing values found
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Histogram — distribution -->
+  <div class="col-md-4">
+    <div class="clean-card p-3 h-100">
+      <div class="dw-label mb-3">
+        Distribution
+        {% if analysis.hist_col %}
+          <span style="color:#555; text-transform:none; font-size:10px; letter-spacing:0;">
+            — {{ analysis.hist_col }}
+          </span>
+        {% endif %}
+      </div>
+      {% if analysis.hist_chart %}
+        <div id="hist-chart"></div>
+      {% else %}
+        <div class="d-flex align-items-center justify-content-center h-100"
+             style="color:#333; font-size:12px; min-height:200px;">
+          No numeric columns found
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
 <!-- NUMERIC SUMMARY -->
 {% if analysis.numeric_summary %}
 <div class="card clean-card p-4 mb-4">
@@ -116,5 +166,24 @@
     <i class="bi bi-magic me-2"></i>Clean This Data
   </a>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.32.0/plotly.min.js"></script>
+<script>
+  const config = { displayModeBar: false, responsive: true };
+
+  const pieData = {{ analysis.pie_chart | safe }};
+  Plotly.newPlot('pie-chart', pieData.data, pieData.layout, config);
+
+  {% if analysis.bar_chart %}
+  const barData = {{ analysis.bar_chart | safe }};
+  Plotly.newPlot('bar-chart', barData.data, barData.layout, config);
+  {% endif %}
+
+  {% if analysis.hist_chart %}
+  const histData = {{ analysis.hist_chart | safe }};
+  Plotly.newPlot('hist-chart', histData.data, histData.layout, config);
+  {% endif %}
+</script>
+
 
 {% endblock %}
